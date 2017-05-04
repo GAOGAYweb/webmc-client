@@ -57,7 +57,7 @@ const main = function() {
       lightsDisabled: true,
       arrayTypeSize: 2,  // arrayType: Uint16Array
       useAtlas: true,
-      generateChunks: false,
+      generateChunks: true,
       chunkDistance: 2,
       texturePath: 'ArtPacks/ProgrammerArt/textures/blocks/', // subproject with textures
       worldOrigin: [0, 0, 0],

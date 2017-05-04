@@ -13,7 +13,7 @@ module.exports = (clientmc) => {
     for (let key in event.chunks) {
       const chunk = event.chunks[key];
 
-      //console.log('showChunk',key);
+      console.log('showChunk',key);
 
       // sending ndarray over postMessage loses prototype (cloning algorithm); reconstitute it TODO: optimize
       const realChunk = ndarray(chunk.data,

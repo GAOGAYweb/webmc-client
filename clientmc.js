@@ -143,18 +143,22 @@ class ClientMC extends EventEmitter
     //this.game.plugins.get('voxel-player').moveTo -251, 81, -309
 
     // login credential
-    let username;
+    var username = 'anonymous';
     const hash = document.location.hash;
+    this.log('hash:', hash);
     if (hash.length < 2) {
       // try anonymous auth
       username = 'user1';
     } else {
       username = hash.substring(1); // remove #
     }
+    this.log('username:' + username);
 
     this.websocketStream = websocket_stream(this.opts.url);
     this.websocketStream.on('connect', () => {
       console.log('websocketStream connected, launching worker');
+
+      this.log('websocket connected');
 
       this.mfworker = webworkify(require('./mf-worker.js'));
       this.mfworkerStream = workerstream(this.mfworker);
