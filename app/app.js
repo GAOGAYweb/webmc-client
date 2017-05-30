@@ -100,7 +100,7 @@ const main = function() {
     'voxel-registry': {},
     'voxel-artpacks': {},
     'voxel-stitch': {
-      artpacks: ['./ProgrammerArt-ResourcePack.zip']
+      artpacks: ['./ProgrammerArt-v3.0-ResourcePack-MC19.zip']
     },
     'voxel-shader': {
       cameraFOV: 90.0

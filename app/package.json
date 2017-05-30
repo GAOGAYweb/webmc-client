@@ -43,6 +43,7 @@
     "voxel-mine": "^0.5.1",
     "voxel-outline": "^0.4.1",
     "voxel-pickaxe": "^0.2.2",
+    "voxel-player": "^0.1.0",
     "voxel-plugins": "^0.3.2",
     "voxel-plugins-ui": "^0.3.0",
     "voxel-pumpkin": "^0.1.3",
