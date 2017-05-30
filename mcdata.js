@@ -184,7 +184,7 @@ const inertBlockProps = {
   clayHardened: {texture: 'hardened_clay'},
   hayBale: {texture: ['hay_block_top', 'hay_block_top', 'hay_block_side']},
 
-  missing: {texture: 'no_texture', displayName: 'Missing Block'}, // custom texture (TODO: standard location?)
+  // missing: {texture: 'no_texture', displayName: 'Missing Block'}, // custom texture (TODO: standard location?)
   // TODO: more blocks
 };
 

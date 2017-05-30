@@ -5,7 +5,7 @@ const createEngine = require('voxel-engine-stackgl');
 const main = function() {
   console.log('starting up');
   createEngine({pluginLoaders: {
-    'voxel-clientmc': require('../'),
+    // 'voxel-clientmc': require('../'),
     'voxel-registry': require('voxel-registry'),
     'voxel-artpacks': require('voxel-artpacks'),
     'voxel-wireframe': require('voxel-wireframe'),
@@ -38,7 +38,7 @@ const main = function() {
     'voxel-blockdata': require('voxel-blockdata'),
     'voxel-decorative': require('voxel-decorative'),
     'voxel-land': require('voxel-land'),
-    'voxel-flatland': require('voxel-flatland'),
+    // 'voxel-flatland': require('voxel-flatland'),
     'voxel-bedrock': require('voxel-bedrock'),
     'voxel-inventory-creative': require('voxel-inventory-creative'),
     'voxel-console': require('voxel-console'),
@@ -57,7 +57,7 @@ const main = function() {
       lightsDisabled: true,
       arrayTypeSize: 2,  // arrayType: Uint16Array
       useAtlas: true,
-      generateChunks: true,
+      generateChunks: false,
       chunkDistance: 2,
       texturePath: 'ArtPacks/ProgrammerArt/textures/blocks/', // subproject with textures
       worldOrigin: [0, 0, 0],
@@ -100,7 +100,7 @@ const main = function() {
     'voxel-registry': {},
     'voxel-artpacks': {},
     'voxel-stitch': {
-      artpacks: ['https://dl.dropboxusercontent.com/u/258156216/artpacks/ProgrammerArt-v2.2.2-dev-ResourcePack-20140521.zip']
+      artpacks: ['./ProgrammerArt-ResourcePack.zip']
     },
     'voxel-shader': {
       cameraFOV: 90.0
@@ -119,11 +119,11 @@ const main = function() {
     'voxel-pumpkin': {},
 
     'voxel-decorative': {},
-    //'voxel-land': {registerBlocks: false},
-    'voxel-flatland': {block: 'missing'},
+    'voxel-land': {registerBlocks: true},
     'voxel-bedrock': {},
+    // 'voxel-flatland': {block: 'bedrock'},
     'voxel-inventory-creative': {},
-    'voxel-clientmc': {},
+    // 'voxel-clientmc': {},
 
     'voxel-console': {},
     'voxel-commands': {},
