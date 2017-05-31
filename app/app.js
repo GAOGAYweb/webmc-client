@@ -5,7 +5,7 @@ const createEngine = require('voxel-engine-stackgl');
 const main = function() {
   console.log('starting up');
   createEngine({pluginLoaders: {
-    // 'voxel-clientmc': require('../'),
+    'voxel-clientmc': require('../'),
     'voxel-registry': require('voxel-registry'),
     'voxel-artpacks': require('voxel-artpacks'),
     'voxel-wireframe': require('voxel-wireframe'),
@@ -37,7 +37,7 @@ const main = function() {
     'voxel-pumpkin': require('voxel-pumpkin'),
     'voxel-blockdata': require('voxel-blockdata'),
     'voxel-decorative': require('voxel-decorative'),
-    'voxel-land': require('voxel-land'),
+    // 'voxel-land': require('voxel-land'),
     // 'voxel-flatland': require('voxel-flatland'),
     'voxel-bedrock': require('voxel-bedrock'),
     'voxel-inventory-creative': require('voxel-inventory-creative'),
@@ -119,11 +119,11 @@ const main = function() {
     'voxel-pumpkin': {},
 
     'voxel-decorative': {},
-    'voxel-land': {registerBlocks: true},
+    // 'voxel-land': {registerBlocks: true},
     'voxel-bedrock': {},
     // 'voxel-flatland': {block: 'bedrock'},
     'voxel-inventory-creative': {},
-    // 'voxel-clientmc': {},
+    'voxel-clientmc': {},
 
     'voxel-console': {},
     'voxel-commands': {},

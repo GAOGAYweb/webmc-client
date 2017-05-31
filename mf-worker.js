@@ -72,7 +72,10 @@ module.exports = function(self) {
       const column = self.bot._chunkColumn(chunkX, chunkZ);
       if (!column) continue;
 
-      const buffer = column.blockType[chunkY >> 4]; // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
+      console.log('joker, column', column)
+      console.log('joker, bot', self.bot)
+      const buffer = column.getBlockType(point); // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
+      // const buffer = column.blockType[chunkY >> 4]; // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
       //console.log('array',chunkY,array);
       if (!buffer) continue; // TODO: set to all air (probably already is, but no guarantee)
 
@@ -222,7 +225,8 @@ module.exports = function(self) {
     self.bot = mineflayer.createBot({
       username: self.username,
       stream: self.duplexStream,
-      noPacketFramer: true
+      noPacketFramer: true,
+      version: "1.8.9",
     });
 
     console.log('mf-worker bot',self.bot);

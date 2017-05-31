@@ -189,7 +189,7 @@ const inertBlockProps = {
 };
 
 const mcBlockID2Voxel = {
-  default: 'missing'
+  default: 'grass'
 };
 
 Object.keys(mcBlockName2Voxel).forEach((mcName) => {
