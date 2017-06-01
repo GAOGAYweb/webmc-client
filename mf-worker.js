@@ -79,16 +79,20 @@ module.exports = function(self) {
 
       console.log('joker, column', column)
       console.log('joker, bot', self.bot)
-      const buffer = column.getBlockType(point); // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
+        // FIXME: modified by joker
+      const buffer = new Buffer([column.getBlockType(point)]); // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
       // const buffer = column.blockType[chunkY >> 4]; // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
       console.log('joker, buffer', buffer);
+      console.log('joker, bot.columns', self.bot.columns);
       console.log('joker, buffer.length', buffer.length);
       //console.log('array',chunkY,array);
       if (!buffer) continue; // TODO: set to all air (probably already is, but no guarantee)
 
       for (let i = 0; i < buffer.length; i += 2) {
         console.log('joker, buffer loop');
-        const mcPackedID = buffer.readUInt16LE(i); // TODO: Uint16Array data view typed array instead?
+        // FIXME: modified by joker
+        // const mcPackedID = buffer.readUInt16LE(i); // TODO: Uint16Array data view typed array instead?
+        const mcPackedID = buffer[i]; // TODO: Uint16Array data view typed array instead?
 
         //const mcBlockID = blockType >> 4;
         //const mcMetaID = blockType & 0xf;
