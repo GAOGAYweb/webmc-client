@@ -79,8 +79,9 @@ module.exports = function(self) {
 
       console.log('joker, column', column)
       console.log('joker, bot', self.bot)
-        // FIXME: modified by joker
-      const buffer = new Buffer([column.getBlockType(point)]); // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
+      // FIXME: modified by joker
+      var b_arr = Array.apply(null, Array(1)).map(Number.prototype.valueOf, column.getBlockType(point));
+      const buffer = new Buffer(b_arr); // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
       // const buffer = column.blockType[chunkY >> 4]; // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
       console.log('joker, buffer', buffer);
       console.log('joker, bot.columns', self.bot.columns);
@@ -277,7 +278,7 @@ module.exports = function(self) {
     });
 
     self.bot.on('chunkColumnLoad', function(point) {
-      self.addColumn(point);
+      // self.addColumn(point);
     });
 
     let pos = [0,0,0];

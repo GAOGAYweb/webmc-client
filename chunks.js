@@ -52,8 +52,12 @@ module.exports = (clientmc) => {
       }
       const ourBlockName = clientmc.opts.mcBlocks[mcID];
       const ourBlockID = clientmc.registry.getBlockIndex(ourBlockName);
-      if (ourBlockID === undefined)
-        throw new Error('voxel-clientmc unrecognized block name: '+ourBlockName+' for MC '+mcID);
+      if (ourBlockID === undefined) {
+        // FIXME: modified by joker
+        // throw new Error('voxel-clientmc unrecognized block name: '+ourBlockName+' for MC '+mcID);
+        console.log('voxel-clientmc unrecognized block name: '+ourBlockName+' for MC '+mcID);
+        continue;
+      }
       const mcPackedID = (mcBlockID << 4) | mcMetaID;
       clientmc.translateBlockIDs[mcPackedID] = ourBlockID;
       clientmc.reverseBlockIDs[ourBlockID] = mcPackedID;

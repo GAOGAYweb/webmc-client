@@ -37,7 +37,7 @@ const main = function() {
     'voxel-pumpkin': require('voxel-pumpkin'),
     'voxel-blockdata': require('voxel-blockdata'),
     'voxel-decorative': require('voxel-decorative'),
-    // 'voxel-land': require('voxel-land'),
+    'voxel-land': require('voxel-land'),
     // 'voxel-flatland': require('voxel-flatland'),
     'voxel-bedrock': require('voxel-bedrock'),
     'voxel-inventory-creative': require('voxel-inventory-creative'),
@@ -119,7 +119,7 @@ const main = function() {
     'voxel-pumpkin': {},
 
     'voxel-decorative': {},
-    // 'voxel-land': {registerBlocks: true},
+    'voxel-land': {registerBlocks: true},
     'voxel-bedrock': {},
     // 'voxel-flatland': {block: 'bedrock'},
     'voxel-inventory-creative': {},

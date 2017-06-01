@@ -99,14 +99,14 @@ class ClientMC extends EventEmitter
     Object.keys(inertBlockProps).forEach((name) => {
       const props = inertBlockProps[name];
 
-      this.registry.registerBlock(name, props);
+      // this.registry.registerBlock(name, props);
     });
 
     const inertItemProps = mcData.inertItemProps;
     Object.keys(inertItemProps).forEach((name) => {
       const props = inertItemProps[name];
 
-      this.registry.registerItem(name, props);
+      // this.registry.registerItem(name, props);
     });
 
     window.addEventListener('hashchange', this.onhashchange = (event) => {
@@ -138,7 +138,7 @@ class ClientMC extends EventEmitter
   connectServer() {
     this.log('voxel-clientmc connecting...');
 
-    this.game.plugins.disable('voxel-land');   // also provides chunks, use ours instead
+    // this.game.plugins.disable('voxel-land');   // also provides chunks, use ours instead
     //this.game.plugins.get('voxel-player').homePosition = [-248, 77, -198] // can't do this TODO
     //this.game.plugins.get('voxel-player').moveTo -251, 81, -309
 
