@@ -17,7 +17,7 @@
     "is-buffer": "^1.1.2",
     "itempile": "^1.0.2",
     "minecraft-data": "^0.19.1",
-    "mineflayer": "^2.1.1",
+    "mineflayer": "^1.7.0",
     "ndarray": "^1.0.14",
     "tellraw2dom": "0.0.4",
     "through": "^2.3.6",

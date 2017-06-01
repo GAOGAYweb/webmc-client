@@ -94,17 +94,13 @@ class ClientMC extends EventEmitter
   }
 
   enable() {
-    console.log('joker, enable voxel-clientmc')
     // Register our own blocks and items which aren't provided by other more specialized plugins
     const inertBlockProps = mcData.inertBlockProps;
-    console.log('joker, whut happened\\0')
     Object.keys(inertBlockProps).forEach((name) => {
       const props = inertBlockProps[name];
-      console.log('joker, registerBlock', name)
 
       this.registry.registerBlock(name, props);
     });
-    console.log('joker, whut happened\\1')
 
     const inertItemProps = mcData.inertItemProps;
     Object.keys(inertItemProps).forEach((name) => {
@@ -112,7 +108,6 @@ class ClientMC extends EventEmitter
 
       this.registry.registerItem(name, props);
     });
-    console.log('joker, whut happened\\2')
 
     window.addEventListener('hashchange', this.onhashchange = (event) => {
       console.log('Hash changed, reloading: ',event);
@@ -120,13 +115,11 @@ class ClientMC extends EventEmitter
       // TODO: only reconnect to server, without refreshing
       window.location.reload();
     });
-    console.log('joker, whut happened\\3')
 
     // Begin connecting to server after voxel-engine is initialized,
     // since it shows chunks (game.showChunk) which requires engine initialization,
     // but plugins are "enabled" before the engine fully is
     this.game.on('engine-init', this.connectServer.bind(this));
-    console.log('joker, finish enable voxel-clientmc')
   }
 
   disable() {
@@ -143,7 +136,6 @@ class ClientMC extends EventEmitter
 
   // TODO: refactor further into modules
   connectServer() {
-    console.log('joker, connectServer invoked')
     this.log('voxel-clientmc connecting...');
 
     this.game.plugins.disable('voxel-land');   // also provides chunks, use ours instead
@@ -163,14 +155,13 @@ class ClientMC extends EventEmitter
     this.log('username:' + username);
 
     this.websocketStream = websocket_stream(this.opts.url);
-    // this.websocketStream.on('connect', () => {
+    this.websocketStream.on('connect', () => {
       console.log('websocketStream connected, launching worker');
 
       this.log('websocket connected');
 
       this.mfworker = webworkify(require('./mf-worker.js'));
       this.mfworkerStream = workerstream(this.mfworker);
-      console.log('joker, workerstream', this.mfworkerStream)
 
       // pass some useful data to the worker
       this.mfworkerStream.write({cmd: 'setVariables',
@@ -202,7 +193,7 @@ class ClientMC extends EventEmitter
 
       // pipe incoming wsmc data to mfworker
       this.websocketStream.pipe(this.mfworkerStream);
-    // });
+    });
 
     this.emit('connectServer');
   }

@@ -35,6 +35,7 @@ module.exports = (clientmc) => {
     // array MC block ID -> our block ID
     // packs 4-bit metadata in LSBs (MC block ID = 12-bits, meta = 4-bits, total 16-bits -> ours 16 bit)
     clientmc.translateBlockIDs = new clientmc.game.arrayType(maxId);
+    console.log('joker, translateBlockIDs init', clientmc.translateBlockIDs);
     clientmc.reverseBlockIDs = {};
     clientmc.defaultBlockID = clientmc.registry.getBlockIndex(clientmc.opts.mcBlocks.default);
 

@@ -42,12 +42,17 @@ module.exports = function(self) {
 
   // Translate packed MC block ID (lower 4 bits metadata, upper 12 block) to 16-bit voxel ID
   self.translateBlockID = function(mcPackedID) {
+    console.log('joker, translateBlockID');
     let ourBlockID;
     if (mcPackedID === 0) {
+      console.log('joker, if branch \\1');
       // air is always air TODO: custom air blocks?
       ourBlockID = 0;
     } else {
+      console.log('joker, if branch \\2');
+      console.log('joker, translateBlockIDs', self.translateBlockIDs);
       ourBlockID = self.translateBlockIDs[mcPackedID]; // indexed by (12-bit block ID << 4) | (4-bit metadata)
+      console.log('joker, whut happened\\1');
       if (!ourBlockID) ourBlockID = self.translateBlockIDs[mcPackedID & ~0xf]; // try 0 metadata
       if (!ourBlockID) ourBlockID = self.defaultBlockID; // default replacement block
     }
@@ -76,14 +81,18 @@ module.exports = function(self) {
       console.log('joker, bot', self.bot)
       const buffer = column.getBlockType(point); // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
       // const buffer = column.blockType[chunkY >> 4]; // for MC 1.8, block type is 16-bit array. TODO: support earlier, 8-bit blockType, add, meta (separated)
+      console.log('joker, buffer', buffer);
+      console.log('joker, buffer.length', buffer.length);
       //console.log('array',chunkY,array);
       if (!buffer) continue; // TODO: set to all air (probably already is, but no guarantee)
 
       for (let i = 0; i < buffer.length; i += 2) {
+        console.log('joker, buffer loop');
         const mcPackedID = buffer.readUInt16LE(i); // TODO: Uint16Array data view typed array instead?
 
         //const mcBlockID = blockType >> 4;
         //const mcMetaID = blockType & 0xf;
+        console.log('joker, whut happened\\1');
 
         //const blockIndex = x + self.chunkSize * z + self.chunkSize * self.chunkSize * y;
         const blockIndex = i >> 1; // since 2 bytes
@@ -95,16 +104,21 @@ module.exports = function(self) {
         const y = chunkY + dy;
         const z = chunkZ + dz;
 
+        console.log('joker, whut happened\\2');
 
         const ourBlockID = self.translateBlockID(mcPackedID);
+        console.log('joker, whut happened\\3');
 
         //const chunkIndex = this.game.voxels.chunkAtCoordinates(a[0], a[1], a[2]);
         const chunkIndex = [x >> self.chunkBits, y >> self.chunkBits, z >> self.chunkBits];
 
         const chunkKey = chunkIndex.join('|');
+        console.log('joker, whut happened\\4');
 
         //let chunk = this.game.voxels.chunks[chunkKey];
         let chunk = chunkCache[chunkKey];
+
+        console.log('joker, chunkCache', chunkCache);
 
         if (!chunk) {
           // create new chunk TODO: refactor, similar chunk data store object creation in voxel-land
@@ -212,10 +226,12 @@ module.exports = function(self) {
 
   // handlers called for main thread
   self.chat = function(event) {
+    console.log('chat:', event.text);
     self.bot.chat(event.text);
   };
 
   self.setVariables = function(event) {
+    console.log('joker, set variables, event', event);
     for (let key in event) {
       self[key] = event[key];
     }
@@ -226,7 +242,7 @@ module.exports = function(self) {
       username: self.username,
       stream: self.duplexStream,
       noPacketFramer: true,
-      version: "1.8.9",
+      version: "1.8",
     });
 
     console.log('mf-worker bot',self.bot);
@@ -242,7 +258,7 @@ module.exports = function(self) {
 
     self.bot.on('message', function(message) {
       //self.console.logNode(tellraw2dom(message.json)); // TODO: send back to parent
-      console.log('mf-worker chat message', message);
+      console.log('joker, mf-worker chat message', message);
       self.postMessage({cmd: 'chat', message: message});
     });
 
