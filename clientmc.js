@@ -89,6 +89,7 @@ class ClientMC extends EventEmitter
     require('./chat.js')(this);
     require('./inventory.js')(this);
     require('./resource_pack.js')(this);
+    require('./player.js')(this);
 
     this.enable();
   }

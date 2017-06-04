@@ -28,7 +28,8 @@
     "websocket-stream": "^1.4.0",
     "webworkify": "^1.0.2",
     "workerstream": "^1.2.1",
-    "wsmc": "git://github.com/deathcap/wsmc.git#master"
+    "wsmc": "git://github.com/deathcap/wsmc.git#master",
+    "minecraft-skin": "^0.1.2"
   },
   "scripts": {
     "start": "(cd app && npm start)"

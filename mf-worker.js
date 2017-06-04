@@ -264,6 +264,14 @@ module.exports = function(self) {
     self.bot.on('message', function(message) {
       //self.console.logNode(tellraw2dom(message.json)); // TODO: send back to parent
       console.log('joker, mf-worker chat message', message);
+      // if (message.text.indexOf('joined the game') != -1 && message.color == 'yellow') { // new player joined
+        // var player_name = message.text.split(' ')[0];
+        // self.postMessage({cmd: 'newPlayer', player: player_name});
+      // }
+      // if (message.text.indexOf('left the game') != -1 && message.color == 'yellow') { // player left
+        // var player_name = message.text.split(' ')[0];
+        // self.postMessage({cmd: 'leftPlayer', player: player_name});
+      // }
       self.postMessage({cmd: 'chat', message: message});
     });
 
